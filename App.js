@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 
 import {TeaNavigator, Theme} from 'teaset';
-import Home from './src/Home';
+import Home from './src/view/Home';
 
 Theme.set({fitIPhoneX: true});
 

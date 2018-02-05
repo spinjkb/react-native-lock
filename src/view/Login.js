@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { BasePage, Input, Button, NavigationPage } from 'teaset';
 import axios from 'axios'
 import Home from './Home'
-
+import ds from '../mobx/demoStorage'
 
 let _this = this
 
@@ -34,9 +34,14 @@ export default class Login extends NavigationPage {
       // alert(JSON.parse(response))
       if(response.data.meta.code ===200){
         alert(response.data.data.message)
-        _this.navigator.push({view: <Home /> })
+        
+        ds.setKv('user',response.data.user.username)
+        this.navigator.push({view: <Home />})
       }
+      console.log(ds.token.user)
       console.log(response.data);
+      console.log(this.props.navigator);
+
     })
     .catch(function(err){
       console.log(err);
