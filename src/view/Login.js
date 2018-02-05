@@ -1,29 +1,38 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 // import { Navigator } from 'react-native-deprecated-custom-components'
-import { BasePage, Input, Button, NavigationPage } from 'teaset';
+import { BasePage, Input, Button, NavigationPage,TeaNavigator } from 'teaset';
+import RNRestart from 'react-native-restart';
 import axios from 'axios'
 import Home from './Home'
-import ds from '../mobx/demoStorage'
+import HomeView from './HomeView'
+import us from '../mobx/userStorage'
 
-let _this = this
+
 
 export default class Login extends NavigationPage {
   
   static defaultProps = {
     ...NavigationPage.defaultProps,
-    title: 'Login',
-    showBackButton: true,
+    title: '登录',
+    showBackButton: false,
   };
 
   constructor(props) {
     super(props);
-    Object.assign(this.state, {
+    this.state={
       userName: null,
-      password: null,
-    });
+      password: null,     
+    }
+    // Object.assign(this.state, {
+    //   userName: null,
+    //   password: null,
+      
+    // });
   }
+  
   login = () => {
+    let _this = this
     // alert(this.state.userName + this.state.password)
     axios.get('http://localhost:3000/login',{
       params:{
@@ -33,14 +42,17 @@ export default class Login extends NavigationPage {
     }).then(function(response){
       // alert(JSON.parse(response))
       if(response.data.meta.code ===200){
-        alert(response.data.data.message)
+        // alert(response.data.data.message)
         
-        ds.setKv('user',response.data.user.username)
-        this.navigator.push({view: <Home />})
+        us.setKv('user',response.data.user.username)
+        // _this.setState({'reload':'true'})
+        console.info(_this.navigator)
+        _this.navigator.push({ view: <HomeView /> })
+        
       }
-      console.log(ds.token.user)
+      console.log(us.token.user)
       console.log(response.data);
-      console.log(this.props.navigator);
+      // console.log(this.props.navigator);
 
     })
     .catch(function(err){
@@ -50,6 +62,7 @@ export default class Login extends NavigationPage {
 
   }
   renderPage() {
+    
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Input
@@ -67,9 +80,13 @@ export default class Login extends NavigationPage {
           secureTextEntry={true}
           onChangeText={text => this.setState({ password: text })}
         />
+        
         <Button title='登录' onPress={this.login} />
       </View>
     );
   }
-
+}
+function HomePage() {
+  return <TeaNavigator rootView={<Home />} />
+  
 }

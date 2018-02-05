@@ -2,11 +2,11 @@ import React , {Component}from 'react';
 import { View ,Image} from 'react-native';
 import { NavigationPage, Label, TabView ,BasePage,TeaNavigator} from 'teaset';
 
-import Main from './Main'
-import User from './User'
+
 import Login from './Login'
-import Room from './Room'
-export default class Home extends BasePage {
+import Register from './Register'
+
+export default class LoginOrRegister extends BasePage {
 
   static defaultProps = {
     ...BasePage.defaultProps,
@@ -17,32 +17,26 @@ export default class Home extends BasePage {
   
 
   renderPage() {
-    
+      
     return (
       <TabView style={{ flex: 1 }} type='projector'>
         <TabView.Sheet
-          title='首页'
+          title='登录'
           icon={require('../icons/home.png')}
           activeIcon={require('../icons/home_active.png')}
         >
-          <Main />
+          <Login />
         </TabView.Sheet>
         
         <TabView.Sheet
-          title='房间'
+          title='注册'
           icon={require('../icons/home.png')}
           activeIcon={require('../icons/home_active.png')}
         >
-          <Room />
+          <Register />
         </TabView.Sheet>
 
-        <TabView.Sheet
-          title='用户'
-          icon={require('../icons/me.png')}
-          activeIcon={require('../icons/me_active.png')}
-        >
-          <User />
-        </TabView.Sheet>
+       
       </TabView>
     );
   }
