@@ -8,7 +8,8 @@ class RoomStore {
     
     @observable room = []
     @observable selectRoom={
-        room:''
+        roomid:'',
+        roomtitle:''
     }
     @action getRoom(){
         return toJS(this.room.slice())
@@ -16,11 +17,15 @@ class RoomStore {
     @action setRoom(value){
         this.room=value
     }
-    @action getSelectRoom(){
-        return this.selectRoom.room
+    @action getSelectRoomId(){
+        return this.selectRoom.roomid
     }
-    @action setSelectRoom(value){
-        this.selectRoom.room=value
+    @action getSelectRoomTitle(){
+        return this.selectRoom.roomtitle
+    }
+    @action setSelectRoom(id,title){
+        this.selectRoom.roomid=id
+        this.selectRoom.roomtitle=title
     }
     // @action setKv(key,value){
     //     this.token[key] = value

@@ -55,11 +55,11 @@ export default class Main extends NavigationPage {
     Main.customKey = null;
   }
   showrs = () => {
-    
+
     console.info(this.navigator)
   }
   renderPage() {
-    
+
     return (
       this.state.loading
         ? <View style={{ height: 20 }} />
@@ -75,7 +75,7 @@ export default class Main extends NavigationPage {
                 bottomSeparator='full'
                 onPress={() => {
                   // console.log(item.id)
-                  rs.setSelectRoom(item.id)
+                  rs.setSelectRoom(item.id, item.title)
                   this.navigator.push({
                     view: <OneRoom />
                   })
