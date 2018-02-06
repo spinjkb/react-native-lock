@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 
-import { NavigationPage, Label, ListRow } from 'teaset';
+import { NavigationPage, Label, ListRow,Button } from 'teaset';
 import Login from './Login'
 import App from '../../App'
 import Register from './Register'
@@ -12,7 +12,7 @@ export default class User extends NavigationPage {
 
   static defaultProps = {
     ...NavigationPage.defaultProps,
-    title: 'User',
+    title: '用户',
     showBackButton: false,
   };
  
@@ -24,15 +24,15 @@ export default class User extends NavigationPage {
   renderPage() {
     return (
       <ScrollView style={{ flex: 1 }}>
-        <View style={{ height: 30 }} />
+        <View style={{ height: 20 }} />
         
         
         <ListRow title='设置' detail='' topSeparator='full' bottomSeparator='full' onPress={()=>this.navigator.push({view: <Setting />})}/>
 
 
-        <View style={{ height: 20 }} />
-        <ListRow title='退出登录' detail='退出登录' topSeparator='full' onPress={this.logout}/>
-        
+        {/* <View style={{ height: 20 }} /> */}
+        {/* <ListRow title='退出登录' detail='退出登录' topSeparator='full' onPress={this.logout}/> */}
+        <Button style={{margin:30}} type='danger' size='lg' title='退出登录' onPress={this.logout} />
 
       </ScrollView>
     );

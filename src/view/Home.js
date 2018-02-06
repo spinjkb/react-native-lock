@@ -6,6 +6,7 @@ import Main from './Main'
 import User from './User'
 import Login from './Login'
 import Room from './Room'
+import Order from './Order'
 export default class Home extends BasePage {
 
   static defaultProps = {
@@ -29,11 +30,11 @@ export default class Home extends BasePage {
         </TabView.Sheet>
         
         <TabView.Sheet
-          title='房间'
+          title='订单'
           icon={require('../icons/home.png')}
           activeIcon={require('../icons/home_active.png')}
         >
-          <Room />
+          <Order />
         </TabView.Sheet>
 
         <TabView.Sheet
