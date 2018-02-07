@@ -58,29 +58,9 @@ export default class OneOrder extends NavigationPage {
         OneOrder.customKey = null;
     }
 
-    show = () => {
-        console.log(this.state)
-        // console.log(rs.getSelectRoomId())
-        // console.log(rs.getSelectRoomTitle())
-    }
-   
-    // renderNavigationBar() {
-    //     // 重新渲染顶部。按钮需要重写
-    //     return (
-    //         <NavigationBar
-    //             title={rs.getSelectRoomTitle()}
-    //             showBackButton={true}
-    //         />
-    //     );
-    // }
-    // renderNavigationTitle() {
-    //     // 只重新渲染标题
-    //     return (
-    //         <View >
-    //             <Label style={{ color: Theme.navTitleColor, fontSize: 17 }} text={rs.getSelectRoomTitle()} />
-    //         </View>
-    //     );
-    // }
+    // show = () => {
+    //     console.log(this.state)
+    // } 
     renderPage() {
         // console.log(rs.getSelectRoomId())
         let { width } = this.state;

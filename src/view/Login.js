@@ -95,7 +95,3 @@ export default class Login extends NavigationPage {
     );
   }
 }
-function HomePage() {
-  return <TeaNavigator rootView={<Home />} />
-
-}
