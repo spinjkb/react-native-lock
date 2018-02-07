@@ -59,12 +59,9 @@ export default class OneRoom extends NavigationPage {
     }
 
     show = () => {
-        // console.log(this.state)
+        console.log(this.state)
         // console.log(rs.getSelectRoomId())
         // console.log(rs.getSelectRoomTitle())
-        this.props.title = rs.getSelectRoomTitle()
-
-        console.log(this)
     }
    
     // renderNavigationBar() {
