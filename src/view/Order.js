@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, ActivityIndicator } from 'react-native';
 import { NavigationPage, Label, ListRow, Toast, Theme, Button } from 'teaset';
 
-import OneRoom from './OneRoom'
+import OneOrder from './OneOrder'
 import axios from 'axios'
 import os from '../mobx/orderStorage'
 
@@ -77,7 +77,7 @@ export default class Order extends NavigationPage {
                   // console.log(item.id)
                   os.setSelectOrder(item.id)
                   this.navigator.push({
-                    view: <OneRoom />
+                    view: <OneOrder />
                   })
                 }} />
             })}
