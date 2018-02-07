@@ -14,8 +14,8 @@ export default class App extends Component {
   render() {
     console.log(us.getKv('user'))
    
-    return <TeaNavigator rootView={<Home />} />
-    // return <TeaNavigator rootView={<LoginOrRegister />} />
+    // return <TeaNavigator rootView={<Home />} />
+    return <TeaNavigator rootView={<LoginOrRegister />} />
     
   }
 }
