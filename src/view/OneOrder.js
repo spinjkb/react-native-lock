@@ -13,8 +13,6 @@ export default class OneOrder extends NavigationPage {
     };
     constructor(props) {
         super(props)
-        // this.items = ['none', 'default', 'custom'];
-        // this.leftViewItems = ['None', 'Back button', 'Link button', 'Icon button', 'Two icon button'];
         this.state = {
             width: Dimensions.get('window').width,
             control: 'default',
@@ -24,7 +22,6 @@ export default class OneOrder extends NavigationPage {
         }
     }
     componentDidMount() {
-        // this.setState({ roomid: rs.getSelectRoomId() })
         this.showCustom()
         let _this = this
         axios.get('http://localhost:3000/getOneOrder', {
@@ -35,10 +32,8 @@ export default class OneOrder extends NavigationPage {
             if (response.data.meta.code === 200) {
                 _this.hideCustom()
                 _this.setState({ loading: false, orderid: os.getSelectOrderId(), orderdetail: response.data.data })
-                // rs.setRoom(response.data.data.room)
                 console.log(response.data)
             }
-            // console.log(rs.getRoom());
         }).catch(function (err) {
             console.log(err);
         });
@@ -58,11 +53,7 @@ export default class OneOrder extends NavigationPage {
         OneOrder.customKey = null;
     }
 
-    // show = () => {
-    //     console.log(this.state)
-    // } 
     renderPage() {
-        // console.log(rs.getSelectRoomId())
         let { width } = this.state;
         return (
             this.state.loading
@@ -81,7 +72,6 @@ export default class OneOrder extends NavigationPage {
 
 
                     <View style={{ height: 20 }} />
-                    {/* <ListRow title='click' detail={this.state.control} onPress={() => this.show()} topSeparator='full' bottomSeparator='full' /> */}
                 </ScrollView>
         );
     }
