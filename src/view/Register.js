@@ -21,6 +21,7 @@ export default class Register extends NavigationPage {
       password: null,
       code: null,
       transactionid:this.randomString(20),
+      autoCorrect:false
     }
   }
   register = () => {
@@ -33,18 +34,14 @@ export default class Register extends NavigationPage {
       return
     }
     let _this = this
-    var params = new FormData();
-    params.append('mobile', this.state.mobile)
-    params.append('transactionid', this.state.transactionid)
-    params.append('code', this.state.code)
-    params.append('password', this.state.password)
-    params.append('first_name', this.state.username)
-
     var qs = require('qs')
     var form = {
       mobile: this.state.mobile,
-      action_type: 'register',
-      transactionid: this.state.transactionid
+      transactionid: this.state.transactionid,
+      code:this.state.code,
+      first_name:this.state.username,
+      password:this.state.password
+
     }
     axios.post('http://47.92.72.19:9000/meetuser/checkAndRegister', qs.stringify(form)).then(function (response) {
       console.log(response)
@@ -58,10 +55,7 @@ export default class Register extends NavigationPage {
       return
     }
     let _this = this
-    var params = new FormData();
-    params.append('mobile',this.state.mobile)
-    params.append('action_type','register')
-    params.append('transactionid',this.state.transactionid)
+    
     var qs = require('qs')
     var form = {
       mobile:this.state.mobile,
@@ -110,7 +104,7 @@ export default class Register extends NavigationPage {
           size='sm'
           value={this.state.username}
           autoCapitalize="none"
-          autoCorrect='false'
+          autoCorrect={this.state.autoCorrect}
           placeholder='用户名'
           onChangeText={text => this.setState({ username: text })}
         />
@@ -120,23 +114,21 @@ export default class Register extends NavigationPage {
           value={this.state.password}
           placeholder='密码'
           autoCapitalize="none"
-          autoCorrect='false'
+          autoCorrect={this.state.autoCorrect}
           secureTextEntry={true}
           onChangeText={text => this.setState({ password: text })}
         />
         <Input
           style={{ width: 200 }}
           size='sm'
-          value={this.state.code}
+          
           placeholder='验证码'
-          secureTextEntry={true}
           onChangeText={text => this.setState({ code: text })}
         />
         <Input
           style={{ width: 200,display: 'none', }}
           size='sm'
           value={this.state.transactionid}
-
         />
         <Button title='发送验证码' onPress={this.send}/>
         <Button title='注册' onPress={this.register} />
